@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  validates :username, uniqueness: true, presence: true
-  validates_presence_of :password, require: true
-
   has_secure_password
+  validates :username, presence: true,
+                    uniqueness: true
+
+  enum role: %w(default admin)
 end
